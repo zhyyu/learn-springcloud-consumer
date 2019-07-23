@@ -1,6 +1,7 @@
 package com.zhyyu.learn.springcloud.consumer.controller;
 
 import com.netflix.hystrix.contrib.javanica.annotation.HystrixCommand;
+import com.zhyyu.learn.springcloud.consumer.service.FeignService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -16,6 +17,9 @@ public class ConsumerController {
 
     @Autowired
     private RestTemplate restTemplate;
+
+    @Autowired
+    private FeignService feignService;
 
     @RequestMapping("hello")
     public String hello() {
@@ -58,6 +62,11 @@ public class ConsumerController {
     @RequestMapping("hello-from-other")
     public String helloFromOther() {
         return restTemplate.getForEntity("http://baidu.com", String.class).getBody();
+    }
+
+    @RequestMapping("hello-from-feign")
+    public String helloFromFeign() {
+        return feignService.helloFromFeign();
     }
 
 }
