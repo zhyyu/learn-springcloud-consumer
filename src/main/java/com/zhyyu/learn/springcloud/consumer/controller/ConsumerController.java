@@ -69,4 +69,19 @@ public class ConsumerController {
         return feignService.helloFromFeign();
     }
 
+    /**
+     * feign 入参对象
+     * <pre>
+     *     为post json 提交
+     *      POST /provider/helloObj HTTP/1.1
+     *      Content-Type: application/json;charset=UTF-8
+     * </pre>
+     */
+    @RequestMapping("helloObj-from-feign")
+    public String helloObjFromFeign() {
+        FeignService.MyObj1 myObj1 = FeignService.MyObj1.builder().key1("value1").key2("value2").build();
+
+        return feignService.helloObjFromFeign(myObj1);
+    }
+
 }
