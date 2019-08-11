@@ -1,5 +1,6 @@
 package com.zhyyu.learn.springcloud.consumer.service;
 
+import com.zhyyu.learn.learn.springcloud.provider.api.config.FormFeignConfig;
 import feign.codec.Encoder;
 import feign.form.spring.SpringFormEncoder;
 import lombok.AllArgsConstructor;
@@ -22,6 +23,8 @@ import javax.ws.rs.core.MediaType;
  */
 //@FeignClient("cloud-provider1")
 //@FeignClient(name = "cloud-provider1", configuration = FeignService.Configuration.class)
+//    使用和 FeignApiService 相同config, 防止配置覆盖问题
+@FeignClient(name = "cloud-provider1", configuration = FormFeignConfig.class)
 public interface FeignService {
 
     @RequestMapping("provider/hello")

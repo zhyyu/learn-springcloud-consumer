@@ -20,8 +20,8 @@ public class ConsumerController {
     @Autowired
     private RestTemplate restTemplate;
 
-    /*@Autowired
-    private FeignService feignService;*/
+    @Autowired
+    private FeignService feignService;
 
     @Autowired
     private FeignApiService feignApiService;
@@ -69,10 +69,10 @@ public class ConsumerController {
         return restTemplate.getForEntity("http://baidu.com", String.class).getBody();
     }
 
-    /*@RequestMapping("hello-from-feign")
+    @RequestMapping("hello-from-feign")
     public String helloFromFeign() {
         return feignService.helloFromFeign();
-    }*/
+    }
 
     /**
      * feign 入参对象
@@ -82,12 +82,12 @@ public class ConsumerController {
      *      Content-Type: application/json;charset=UTF-8
      * </pre>
      */
-    /*@RequestMapping("helloObj-from-feign")
+    @RequestMapping("helloObj-from-feign")
     public String helloObjFromFeign() {
         FeignService.MyObj1 myObj1 = FeignService.MyObj1.builder().key1("value1").key2("value2").build();
 
         return feignService.helloObjFromFeign(myObj1);
-    }*/
+    }
 
     /**
      * Field feignApiService in com.zhyyu.learn.springcloud.consumer.controller.ConsumerController required a bean of type 'com.zhyyu.learn.learn.springcloud.provider.api.service.FeignApiService' that could not be found.
