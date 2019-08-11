@@ -21,7 +21,7 @@ import javax.ws.rs.core.MediaType;
  * @datatime 2019/7/23 0:08
  */
 //@FeignClient("cloud-provider1")
-@FeignClient(name = "cloud-provider1", configuration = FeignService.Configuration.class)
+//@FeignClient(name = "cloud-provider1", configuration = FeignService.Configuration.class)
 public interface FeignService {
 
     @RequestMapping("provider/hello")
