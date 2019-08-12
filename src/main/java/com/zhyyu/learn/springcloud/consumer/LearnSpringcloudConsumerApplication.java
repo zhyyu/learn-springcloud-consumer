@@ -10,6 +10,7 @@ import org.springframework.cloud.openfeign.EnableFeignClients;
 @EnableDiscoveryClient
 @EnableCircuitBreaker
 @SpringBootApplication
+//@SpringBootApplication(scanBasePackages = {"com.zhyyu.learn.springcloud.consumer", "com.zhyyu.learn.learn.springcloud.provider.api"})
 public class LearnSpringcloudConsumerApplication {
 
     public static void main(String[] args) {

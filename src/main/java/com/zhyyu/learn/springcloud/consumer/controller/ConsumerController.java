@@ -2,6 +2,7 @@ package com.zhyyu.learn.springcloud.consumer.controller;
 
 import com.netflix.hystrix.contrib.javanica.annotation.HystrixCommand;
 import com.zhyyu.learn.learn.springcloud.provider.api.dto.MyDTO1;
+import com.zhyyu.learn.learn.springcloud.provider.api.service.FeignApi2Service;
 import com.zhyyu.learn.learn.springcloud.provider.api.service.FeignApiService;
 import com.zhyyu.learn.springcloud.consumer.service.FeignService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -20,11 +21,14 @@ public class ConsumerController {
     @Autowired
     private RestTemplate restTemplate;
 
-    @Autowired
+    @Autowired(required = false)
     private FeignService feignService;
 
     @Autowired
     private FeignApiService feignApiService;
+
+    @Autowired
+    private FeignApi2Service feignApi2Service;
 
     @RequestMapping("hello")
     public String hello() {
@@ -102,6 +106,25 @@ public class ConsumerController {
     @RequestMapping("helloFromFeignApi")
     public String feignApiService() {
         return feignApiService.helloFromFeignApi(MyDTO1.builder().key1("value1").key2("value2").build());
+    }
+
+    /**
+     * feign.codec.EncodeException: Could not write request: no suitable HttpMessageConverter found for request type [com.zhyyu.learn.learn.springcloud.provider.api.dto.MyDTO1] and content type [application/x-www-form-urlencoded]
+     * 解决试图:
+     * add @Configuration on FormFeignConfig
+     * 结果依然异常
+     *
+     * 解决:
+     * @SpringBootApplication(scanBasePackages = {"com.zhyyu.learn.springcloud.consumer", "com.zhyyu.learn.learn.springcloud.provider.api"}) 扫描对应配置包
+     *
+     * 或者:
+     * 去除 @Configuration on FormFeignConfig
+     * 添加
+     * @FeignClient(name = "cloud-provider2", path = "/provider2", configuration = FormFeignConfig.class) on FeignApi2Service
+     */
+    @RequestMapping("helloFromFeignApi2")
+    public String helloFromFeignApi2() {
+        return feignApi2Service.helloFromFeignApi2(MyDTO1.builder().key1("value1").key2("value2").build());
     }
 
 }
