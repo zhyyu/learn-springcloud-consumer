@@ -1,6 +1,6 @@
 package com.zhyyu.learn.springcloud.consumer.service;
 
-import com.zhyyu.learn.learn.springcloud.provider.api.config.FormFeignConfig;
+import com.zhyyu.learn.springcloud.provider.api.config.FormFeignConfig;
 import feign.codec.Encoder;
 import feign.form.spring.SpringFormEncoder;
 import lombok.AllArgsConstructor;

@@ -6,7 +6,7 @@ import org.springframework.cloud.client.circuitbreaker.EnableCircuitBreaker;
 import org.springframework.cloud.client.discovery.EnableDiscoveryClient;
 import org.springframework.cloud.openfeign.EnableFeignClients;
 
-@EnableFeignClients(basePackages = {"com.zhyyu.learn.springcloud.consumer.service", "com.zhyyu.learn.learn.springcloud.provider.api.service"})
+@EnableFeignClients(basePackages = {"com.zhyyu.learn.springcloud.consumer.service", "com.zhyyu.learn.springcloud.provider.api.service"})
 @EnableDiscoveryClient
 @EnableCircuitBreaker
 @SpringBootApplication

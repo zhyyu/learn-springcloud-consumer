@@ -1,9 +1,9 @@
 package com.zhyyu.learn.springcloud.consumer.controller;
 
 import com.netflix.hystrix.contrib.javanica.annotation.HystrixCommand;
-import com.zhyyu.learn.learn.springcloud.provider.api.dto.MyDTO1;
-import com.zhyyu.learn.learn.springcloud.provider.api.service.FeignApi2Service;
-import com.zhyyu.learn.learn.springcloud.provider.api.service.FeignApiService;
+import com.zhyyu.learn.springcloud.provider.api.dto.MyDTO1;
+import com.zhyyu.learn.springcloud.provider.api.service.FeignApi2Service;
+import com.zhyyu.learn.springcloud.provider.api.service.FeignApiService;
 import com.zhyyu.learn.springcloud.consumer.service.FeignService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestMapping;
